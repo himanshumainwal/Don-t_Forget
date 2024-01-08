@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}Edit Details{% endblock  %}
+{% block body %}
+<h1 class="container text-center fw-bold my-3"  style="font-size: 3.5rem;">Edit Details</h1>
+<form action="" method="POST" enctype="multipart/form-data">
+{% csrf_token %}
+
+<div class="container shadow p-4">
+    <div class="mb-3">
+        <label for="exampleFormControlInput1" class="form-label fs-3 fw-medium">Payment Receiver</label>
+        <input type="text" value="{{detail.payment_receiver}}" name="payment_receiver" class="form-control" id="exampleFormControlInput1" placeholder="Receiver Name">
+    </div>
+    <div class="mb-3">
+        <label for="exampleFormControlInput1" class="form-label fs-3 fw-medium">Amount</label>
+        <input type="text" value="{{detail.payment_amount}}" name="payment_amount" class="form-control" id="exampleFormControlInput1" placeholder="Receiver Name">
+    </div>
+    <div class="mb-3">
+        <label for="exampleFormControlInput1" class="form-label fs-3 fw-medium">Payment Mode</label>
+        <input type="text" value="{{detail.mode_of_payment}}" name="payment_mode" class="form-control" id="exampleFormControlInput1" placeholder="Payment Mode Name">
+    </div>
+    <div class="mb-3">
+        <label for="exampleFormControlInput1" class="form-label fs-3 fw-medium">Transaction ID</label>
+        <input type="text" value="{{detail.transaction_id}}" name="transaction_id" class="form-control" id="exampleFormControlInput1" placeholder="Transaction Number">
+    </div>
+    <div class="mb-3">
+        <label for="exampleFormControlInput1" class="form-label fs-3 fw-medium">Payment Image</label>
+        <input type="file" name="payment_img" class="form-control" id="exampleFormControlInput1">
+    </div>
+    <button type="submit" class="btn btn-success">Edit</button>
+    
+</div>
+
+</form>
+
+{% endblock %}

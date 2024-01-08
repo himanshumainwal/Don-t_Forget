@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}Contact{% endblock  %}
+<!-- <link rel="stylesheet" href="{% static 'style.css' %}"> -->
+{% block body %}
+<div id="contact" >
+ <h1 class="text-center container fw-bold pt-4" style="font-size: 3.5rem;">Contact Us</h1>
+ <hr class="border border-primary border-3 opacity-50 container">
+
+    <form action="{% url 'contact' %}" method="POST">
+        {% csrf_token %}
+        <div class="container my-5 p-3 rounded" id="form">
+            <div class="mb-3">
+              <label for="exampleFormControlInput1" class="form-label">Full Name</label>
+              <input type="text" name="Cfname" class="form-control" id="exampleFormControlInput1" placeholder="Your Name">
+            </div>
+            <div class="mb-3">
+              <label for="exampleFormControlInput1" class="form-label">Email Address</label>
+              <input type="email" name="Cemail" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+            </div>
+            <div class="mb-3">
+              <label for="exampleFormControlInput1" class="form-label">Contact No.</label>
+              <input type="text" name="Cphone" class="form-control" id="exampleFormControlInput1" placeholder="+91-1234567890">
+            </div>
+            <div class="mb-3">
+              <label for="exampleFormControlTextarea1" class="form-label">Massage</label>
+              <textarea class="form-control" name="Cmassage" id="exampleFormControlTextarea1" placeholder="Text here..." rows="3"></textarea>
+            </div>
+              <button type="submit" class="btn btn-outline-success">Submit</button>
+        </div>
+    </form>
+ 
+</div>
+
+{% endblock %}

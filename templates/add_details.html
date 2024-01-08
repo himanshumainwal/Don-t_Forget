@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}Add Details{% endblock  %}
+
+{% block body %}
+<div style="background: linear-gradient(90deg, rgba(164,30,175,0.7609637605042017) 11%, rgba(0,144,255,0.7077424719887955) 78%);
+height: 95vh;">
+{% for message in messages %}  
+<div class="alert alert-{{message.tags}} alert-dismissible fade show" role="alert">
+    <strong>Massage!</strong> {{message}}
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  </div>
+{% endfor %}
+<h1 class="container text-center text-light fw-bold pt-3"  style="font-size: 3.5rem;">Add Details</h1>
+<hr class="border border-primary border-3 opacity-50 container">
+
+<form action="" method="POST" enctype="multipart/form-data">
+{% csrf_token %}
+
+<div class="container mt-4 shadow-lg rounded p-4" id="form-2">
+    <div class="mb-3">
+        <label for="exampleFormControlInput1" class="form-label  fs-5 fw-medium">Payment Receiver</label>
+        <input type="text" name="payment_receiver" class="form-control" id="exampleFormControlInput1" placeholder="Receiver Name">
+    </div>
+    <div class="mb-3">
+        <label for="exampleFormControlInput1" class="form-label  fs-5 fw-medium">Amount</label>
+        <input type="text" name="payment_amount" class="form-control" id="exampleFormControlInput1" placeholder="Receiver Name">
+    </div>
+    <div class="mb-3">
+        <label for="exampleFormControlInput1" class="form-label  fs-5 fw-medium">Payment Mode</label>
+        <input type="text" name="payment_mode" class="form-control" id="exampleFormControlInput1" placeholder="Payment Mode Name">
+    </div>
+    <div class="mb-3">
+        <label for="exampleFormControlInput1" class="form-label  fs-5 fw-medium">Transaction ID</label>
+        <input type="text" name="transaction_id" class="form-control" id="exampleFormControlInput1" placeholder="Transaction Number">
+    </div>
+    <div class="mb-3">
+        <label for="exampleFormControlInput1" class="form-label  fs-5 fw-medium">Payment Image</label>
+        <input type="file" name="payment_img" class="form-control" id="exampleFormControlInput1">
+    </div>
+    <button type="submit" class="btn btn-outline-success">Submit</button>
+    
+</div>
+
+</form>
+</div>
+{% endblock %}

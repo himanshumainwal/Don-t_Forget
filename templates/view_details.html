@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}Information{% endblock  %}
+
+{% block body %}
+<div style="background: linear-gradient(90deg, rgba(164,30,175,0.7609637605042017) 11%, rgba(0,144,255,0.7077424719887955) 78%);
+height: 95vh;">
+{% for message in messages %}  
+<div class="alert alert-{{message.tags}} alert-dismissible fade show" role="alert">
+    <strong>Massage!</strong> {{message}}
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  </div>
+{% endfor %}
+<h1 class="container text-center fw-bold text-light pt-4" style="font-size: 3.5rem;">Informations</h1>
+<hr class="border border-primary border-3 opacity-50 container">
+
+<div class="container mt-5">
+    <table class="table table-striped p-2">
+        <thead>
+          <tr>
+            <th scope="col">Serial No.</th>
+            <th scope="col">Receiver Name</th>
+            <th scope="col">Amount</th>
+            <th scope="col">Payment Mode</th>
+            <th scope="col">Transaction ID</th>
+            <th scope="col">Image</th>
+            <th scope="col">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+        {% if user.is_authenticated %}
+          {% for detail in details %}
+          <tr>
+            <th scope="row">{{ forloop.counter }}</th>
+            <td>{{detail.payment_receiver}}</td>
+            <td>{{detail.payment_amount}}</td>
+            <td>{{detail.mode_of_payment}}</td>
+            <td>{{detail.transaction_id}}</td>
+            <td><img src="{{ detail.Payment_img.url }}" alt="Payment Image" height="80px" width="100px"></td>
+            <td><a href="/edit_info/{{detail.id}}/" class="btn btn-outline-success">Edit</a>
+                <a href="/delete_info/{{detail.id}}/" class="btn btn-outline-danger">Delete</a>
+            </td>
+          </tr>
+          {% endfor %}
+        {% endif %}
+        </tbody>
+        
+      </table>
+</div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}Sign Up{% endblock  %}
+
+{% block body %}
+<div style="background: linear-gradient(90deg, rgba(164,30,175,0.7609637605042017) 11%, rgba(0,144,255,0.7077424719887955) 78%);
+height: 100vh;">
+{% for message in messages %}  
+<div class="alert alert-{{message.tags}} alert-dismissible fade show" role="alert">
+    <strong>Massage!</strong> {{message}}
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  </div>
+{% endfor %}
+
+<h1 class="text-center fw-bold text-light pt-4" style="font-size: 3.5rem;">Create Account</h1>
+<hr class="border border-primary border-3 opacity-50 container">
+    <div class="container text-center shadow mt-5 rounded p-4"  id="form-2">
+        <form action="{% url 'register' %}" method="post">
+            {% csrf_token %}
+            <div class="row mb-3  mt-4">
+              <label for="inputEmail3" class="col-sm-3 col-form-label">Full Name:</label>
+              <div class="col-sm-8">
+                <input type="text" class="form-control" placeholder="Full Name" name="fullName">
+              </div>
+            </div>
+            <div class="row mb-3   ">
+              <label for="inputPassword3" class="col-sm-3 col-form-label">Username:</label>
+              <div class="col-sm-8">
+                <input type="text" class="form-control" placeholder="@username" name="username">
+              </div>
+            </div>
+            <div class="row mb-3   ">
+              <label for="inputPassword3" class="col-sm-3 col-form-label">Email:</label>
+              <div class="col-sm-8">
+                <input type="email" class="form-control" placeholder="Email Address" id="inputEmail3" name="email">
+              </div>
+            </div>
+            <div class="row mb-3   ">
+              <label for="inputPassword3" class="col-sm-3 col-form-label">Password:</label>
+              <div class="col-sm-8">
+                <input type="password" class="form-control" placeholder="Password" id="inputPassword3" name="password">
+              </div>
+            </div>
+            <div class="row mb-3   ">
+              <label for="inputPassword3" class="col-sm-3 col-form-label">Repeat Password:</label>
+              <div class="col-sm-8">
+                <input type="password" class="form-control" placeholder="Confirm Password" id="inputPassword3" name="repeatPassword">
+              </div>
+            </div>
+            <button type="submit" class="btn btn-outline-primary">Sign-In</button>
+          </form>
+    </div>
+    </div>
+
+{% endblock  %}
